@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, Tahoma, sans-serif;
+}
+.begin, #game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(114 153 204 / 90%);
+  z-index: 50000000;
+}
+#game-over {
+    display: none;
+}
+.start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6000;
+  background: #ff4800;
+  border-radius: 10px;
+  padding: 7px 10px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+}
+.container {
+  width: fit-content;
+  margin: auto;
+  box-sizing: border-box;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #eee;
+  font-size: 20px;
+  border: 2px solid blue;
+  border-radius: 6px;
+}
+img {
+  width: 120px;
+  height: 120px;
+  border: 3px solid blue;
+}
+.gallery {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 10px;
+}
+
+.face {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.back {
+  transform: rotateY(180deg);
+}
+.box {
+  transform-style: preserve-3d;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.is-flipped {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  pointer-events: none;
+}
+.no-clicking {
+  pointer-events: none;
+}
+.counter {
+  position: absolute;
+  font-size: 30px;
+  right: 40px;
+  top: 20px;
+}
+.counter p {
+    margin: 0;
+}

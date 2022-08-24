@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css link  -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>memory game</title>
+  </head>
+  <body>
+    <div class="overlay begin">
+      <div class="start">
+        <h1>Start Game</h1>
+      </div>
+    </div>
+    <div class="overlay" id="game-over">
+      <div class="start">
+        <h1></h1>
+        <h1>Play Again ?</h1>
+      </div>
+    </div>
+    <div class="counter">
+      <p>00:42</p>
+    </div>
+    <div class="container">
+      <div class="info">
+        <div class="name">
+          <p>Hello : <span></span></p>
+        </div>
+        <div class="tries">
+          <p>Wrong tries : <span>0</span></p>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="box" data-lang="c#">
+          <img
+            src="imgs/img1.png"
+            alt=""
+            class="back"
+            style="width: 110px; height: 110px; padding: 5px"
+          />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="c">
+          <img src="imgs/img2.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="java">
+          <img src="imgs/img4.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="php">
+          <img src="imgs/img6.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="githup">
+          <img src="imgs/img10.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="c++">
+          <img
+            src="imgs/img3.png"
+            alt=""
+            class="back"
+            style="width: 110px; height: 110px; padding: 5px"
+          />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="python">
+          <img src="imgs/img7.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="r">
+          <img src="imgs/img8.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="c">
+          <img src="imgs/img2.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="vsc">
+          <img src="imgs/img9.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="c#">
+          <img
+            src="imgs/img1.png"
+            alt=""
+            class="back"
+            style="width: 110px; height: 110px; padding: 5px"
+          />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="js">
+          <img src="imgs/img5.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="r">
+          <img src="imgs/img8.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="python">
+          <img src="imgs/img7.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="c++">
+          <img
+            src="imgs/img3.png"
+            alt=""
+            class="back"
+            style="width: 110px; height: 110px; padding: 5px"
+          />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="js">
+          <img src="imgs/img5.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="vsc">
+          <img src="imgs/img9.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="java">
+          <img src="imgs/img4.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="githup">
+          <img src="imgs/img10.png" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+        <div class="box" data-lang="php">
+          <img src="imgs/img6.jpg" alt="" class="back" />
+          <img src="imgs/unknown.jpg" alt="" class="face" />
+        </div>
+      </div>
+    </div>
+
+    <audio id="success" src="audio/success-1-6297.mp3" preload="auto"></audio>
+    <audio id="music" src="audio/music_pop_6-28744.mp3" preload="auto"></audio>
+    <audio id="fail" src="audio/Fail - Sound Effect.mp3"></audio>
+    <audio id= "end-success" src="audio/success-fanfare-trumpets-6185.mp3"></audio>
+    <!-- js link  -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
