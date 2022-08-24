@@ -8,9 +8,9 @@ starts.forEach((start) => {
     document.getElementById("music").play();
 
     let person = "";
-    // do {
-    //   person = window.prompt("Please enter your name : ");
-    // } while (person == "");
+    do {
+      person = window.prompt("Please enter your name : ");
+    } while (person == "");
     name.innerHTML = person;
     overlays.forEach((overlay) => {
       overlay.style.display = "none";
