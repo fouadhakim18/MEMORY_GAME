@@ -10,30 +10,33 @@
   </head>
   <body>
     <div class="overlay begin">
-      <div class="start">
+      <div class="start" id="begin">
         <h1>Start Game</h1>
       </div>
     </div>
     <div class="overlay" id="game-over">
       <div class="start">
         <h1></h1>
-        <h1>Play Again ?</h1>
+        <h1 id="next"></h1>
       </div>
     </div>
     <div class="counter">
-      <p>00:42</p>
+      <p></p>
     </div>
     <div class="container">
       <div class="info">
         <div class="name">
           <p>Hello : <span></span></p>
         </div>
+        <div class="level">
+          <p>Level : <span>1</span></p>
+        </div>
         <div class="tries">
           <p>Wrong tries : <span>0</span></p>
         </div>
       </div>
       <div class="gallery">
-        <div class="box" data-lang="c#">
+        <div class="box hide" data-lang="c#">
           <img
             src="imgs/img1.png"
             alt=""
@@ -42,7 +45,7 @@
           />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="c">
+        <div class="box hide" data-lang="c">
           <img src="imgs/img2.png" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
@@ -50,7 +53,7 @@
           <img src="imgs/img4.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="php">
+        <div class="box hide" data-lang="php">
           <img src="imgs/img6.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
@@ -75,15 +78,15 @@
           <img src="imgs/img8.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="c">
+        <div class="box hide" data-lang="c">
           <img src="imgs/img2.png" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="vsc">
+        <div class="box hide" data-lang="vsc">
           <img src="imgs/img9.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="c#">
+        <div class="box hide" data-lang="c#">
           <img
             src="imgs/img1.png"
             alt=""
@@ -117,7 +120,7 @@
           <img src="imgs/img5.png" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="vsc">
+        <div class="box hide" data-lang="vsc">
           <img src="imgs/img9.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
@@ -129,7 +132,7 @@
           <img src="imgs/img10.png" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>
-        <div class="box" data-lang="php">
+        <div class="box hide" data-lang="php">
           <img src="imgs/img6.jpg" alt="" class="back" />
           <img src="imgs/unknown.jpg" alt="" class="face" />
         </div>

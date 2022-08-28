@@ -1,5 +1,8 @@
 body {
   font-family: Arial, Tahoma, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 .begin, #game-over {
   position: absolute;
@@ -51,7 +54,7 @@ img {
 .gallery {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
 
@@ -87,4 +90,10 @@ img {
 }
 .counter p {
     margin: 0;
+}
+.hide {
+  display: none;
+}
+.level-3 {
+  grid-template-columns: auto auto auto auto auto;
 }

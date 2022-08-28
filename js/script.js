@@ -1,74 +1,85 @@
 let overlays = document.querySelectorAll(".overlay");
 let starts = document.querySelectorAll(".start");
-let name = document.querySelector(".name span");
-let itemsFlipped = 0;
-starts.forEach((start) => {
-  start.addEventListener("click", () => {
-    itemsFlipped = 0;
-    document.getElementById("music").play();
-
-    let person = "";
-    do {
-      person = window.prompt("Please enter your name : ");
-    } while (person == "");
-    name.innerHTML = person;
-    overlays.forEach((overlay) => {
-      overlay.style.display = "none";
-    });
-    document.querySelector("#music").play();
-    items.forEach((item, index) => {
-      item.classList.add("is-flipped");
-      setTimeout(() => {
-        item.classList.remove("is-flipped");
-        let counter = document.querySelector(".counter p");
-        let time = 42;
-        let counterDown = setInterval(countDown, 1000);
-        function countDown() {
-          time--;
-          time < 10
-            ? (counter.innerHTML = `00:0${time}`)
-            : (counter.innerHTML = `00:${time}`);
-          if (time == 0 || itemsFlipped == 10) {
-            document.getElementById("music").pause();
-            clearInterval(counterDown);
-            document.getElementById("game-over").style.display = "block";
-            if (itemsFlipped == 10) {
-              document.querySelector("#game-over h1").innerHTML = "You Won !";
-              document.getElementById("end-success").play();
-            } else {
-              document.querySelector("#game-over h1").innerHTML = "You Losed";
-              document.getElementById("fail").play();
-            }
-          }
-        }
-      }, 1500);
-    });
-  });
-});
-
+let itemsFlipped;
 let itemsTapped = [];
 let items = document.querySelectorAll(".box");
 let tries = document.querySelector(".tries span");
-
+let counter = document.querySelector(".counter p");
 let arrayOfNums = [...Array(items.length).keys()];
-shuffle(arrayOfNums);
+let level;
+let hiddenCards = document.querySelectorAll(".hide");
+let time;
+let counterDown;
 
-items.forEach((item, index) => {
-  item.style.order = arrayOfNums[index];
+starts.forEach((start) => {
+  start.addEventListener("click", () => {
+    itemsTapped = [];
+    itemsFlipped = 0;
+    tries.innerHTML = 0;
+    document.getElementById("music").play();
+    shuffle(arrayOfNums);
+    if (start.id == "begin") {
+      userPrompt(); // ask for name only when he starts first time
+      level = 1;
+    }
+    overlays.forEach((overlay) => {
+      overlay.style.display = "none";
+    });
+
+    items.forEach((item, index) => {
+      item.style.order = arrayOfNums[index];
+      item.classList.add("is-flipped");   // show all cards
+      setTimeout(() => {
+        item.classList.remove("is-flipped"); // hide cards after 1.5s
+      }, 1500);
+    });
+    setTimeout(() => {
+      setTime();   // counter according to level
+      counterDown = setInterval(countDown, 1000);
+      function countDown() {
+        time--;
+        time < 10
+          ? (counter.innerHTML = `00:0${time}`)
+          : (counter.innerHTML = `00:${time}`);
+        if (time == 0 || checkWinning()) {
+          items.forEach((item) => {
+            item.classList.remove("is-flipped");
+          });
+          document.getElementById("music").pause();
+          clearInterval(counterDown);
+          document.getElementById("game-over").style.display = "block";
+          if (checkWinning()) {
+            document.getElementById("end-success").play();
+            if (level == 3) {
+              document.querySelector("#game-over h1").innerHTML = "You WON !";
+              document.querySelector("#next").innerHTML = "Play Again ?";
+              startAgain();   // back to level one
+            } else {
+              document.querySelector("#game-over h1").innerHTML = "Continue ?";
+            }
+            level++;
+            document.querySelector(".level span").innerHTML = level;
+            nextLevel(level, hiddenCards);
+          } else {
+            document.getElementById("fail").play();
+            document.querySelector("#game-over h1").innerHTML = "Play Again ?";
+            startAgain();
+            level++;
+            document.querySelector(".level span").innerHTML = level;
+          }
+        }
+      }
+    }, 1500);
+  });
+});
+items.forEach((item) => {
   item.addEventListener("click", () => {
     item.classList.add("is-flipped");
     itemsTapped.push(item);
     if (itemsTapped.length === 2) {
       document.querySelector(".gallery").classList.add("no-clicking");
       setTimeout(() => {
-        if (itemsTapped[0].dataset.lang !== itemsTapped[1].dataset.lang) {
-          itemsTapped[0].classList.remove("is-flipped");
-          itemsTapped[1].classList.remove("is-flipped");
-          tries.innerHTML++;
-        } else {
-          document.getElementById("success").play();
-          itemsFlipped++;
-        }
+        checkMatchingCards(itemsTapped);
         document.querySelector(".gallery").classList.remove("no-clicking");
         itemsTapped = [];
       }, 500);
@@ -76,6 +87,7 @@ items.forEach((item, index) => {
   });
 });
 
+//Functions
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
@@ -95,5 +107,57 @@ function shuffle(array) {
 
   return array;
 }
-
-// show all items
+function checkMatchingCards(cards) {
+  if (cards[0].dataset.lang !== cards[1].dataset.lang) {
+    cards[0].classList.remove("is-flipped");
+    cards[1].classList.remove("is-flipped");
+    tries.innerHTML++;
+  } else {
+    document.getElementById("success").play();
+    itemsFlipped++;
+  }
+}
+function userPrompt() {
+  let person = window.prompt("Please enter your name : ");
+  document.querySelector(".name span").innerHTML =
+    person == "" ? "Unknown" : person;
+}
+function checkWinning() {
+  return (
+    (level == 1 && itemsFlipped == 6) ||
+    (level == 2 && itemsFlipped == 8) ||
+    (level == 3 && itemsFlipped == 10)
+  );
+}
+function nextLevel(level, hidden) {
+  if (level >= 2) {
+    hidden[0].classList.remove("hide");
+    hidden[5].classList.remove("hide");
+    hidden[2].classList.remove("hide");
+    hidden[7].classList.remove("hide");
+    if (level == 3) {
+      hidden[4].classList.remove("hide");
+      hidden[1].classList.remove("hide");
+      hidden[3].classList.remove("hide");
+      hidden[6].classList.remove("hide");
+      document.querySelector(".gallery").classList.add("level-3");
+    }
+  }
+}
+function startAgain() {
+  level = 0;
+  document.querySelector(".gallery").classList.remove("level-3");
+  hiddenCards.forEach((card) => {
+    card.classList.add("hide");
+  });
+}
+function setTime() {
+  if (level == 1) {
+    time = 20;
+  } else if (level == 2) {
+    time = 35;
+  } else {
+    time = 42;
+  }
+  counter.innerHTML = `00:${time}`;
+}
